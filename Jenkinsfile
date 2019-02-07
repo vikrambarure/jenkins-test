@@ -1,9 +1,20 @@
 pipeline {
-    agent any 
+    agent any
+    tools {
+        jdk 'jdk8'
+        maven 'maven3'
+    }
     stages {
-        stage('Stage 1') {
+        stage('test java installation') {
             steps {
-                echo 'Hello worlds!' 
+                sh 'java -version'
+                sh 'which java'
+            }
+        }
+        stage('test maven installation') {
+            steps {
+                sh 'mvn -version'
+                sh 'which mvn'
             }
         }
     }
